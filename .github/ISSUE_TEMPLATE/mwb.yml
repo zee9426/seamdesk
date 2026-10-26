@@ -1,0 +1,53 @@
+name: Mouse Without Borders compatibility
+description: Seamdesk with a machine that runs Mouse Without Borders, working or not.
+labels: [mwb-compat]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports that it works are useful too. Remove host names and IP addresses from anything you paste,
+        and never paste the security key.
+  - type: dropdown
+    id: mwb
+    attributes:
+      label: Mouse Without Borders on the other machine
+      options:
+        - Standalone (Microsoft Garage) 2.x
+        - PowerToys 0.100 or earlier
+        - PowerToys 0.101 or later
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: mwb-version
+    attributes:
+      label: Its exact version
+      description: From MWB's About, or PowerToys' settings.
+  - type: input
+    id: version
+    attributes:
+      label: Seamdesk version
+      description: Settings > About.
+    validations:
+      required: true
+  - type: checkboxes
+    id: direction
+    attributes:
+      label: What you tried
+      options:
+        - label: Seamdesk drives the MWB machine
+        - label: The MWB machine drives Seamdesk ("Let ... control this PC" on)
+        - label: Copy and paste
+  - type: textarea
+    id: result
+    attributes:
+      label: What happened
+      description: Did it connect? What did the machine's card on Settings > Machines say (version row, status)?
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt
+      description: The `mwb <name>:` lines from %LOCALAPPDATA%\Seamdesk\seamdesk.log. Remove names and addresses first.
+      render: text

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Not in Seamdesk.slnx: needs a PowerToys checkout (run extract.sh first). See README.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <!-- MWB's own code, as it is: obsolete AES provider, analyzer suppressions, unused variables. -->
+    <NoWarn>$(NoWarn);SYSLIB0021;CS0162;CS0168;CS0169;CS0219;CS0414;CS0649;CA1416</NoWarn>
+    <!-- No packages: a lock file would only churn. -->
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+  </PropertyGroup>
+
+  <!-- Which MWB to compile: -p:Mwb=old (a9e1f0f20^, the default) or -p:Mwb=current (48c4bad07). -->
+  <PropertyGroup>
+    <Mwb Condition="'$(Mwb)' == ''">old</Mwb>
+    <DefineConstants Condition="'$(Mwb)' == 'current'">$(DefineConstants);MWB_CURRENT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="mwb/**" />
+    <Compile Include="mwb/$(Mwb)/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Seamdesk.Mwb\Seamdesk.Mwb.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Seamdesk.App/Seamdesk.App.csproj" />
+    <Project Path="src/Seamdesk.Core/Seamdesk.Core.csproj" />
+    <Project Path="src/Seamdesk.Host/Seamdesk.Host.csproj" />
+    <Project Path="src/Seamdesk.Mwb/Seamdesk.Mwb.csproj" />
+    <Project Path="src/Seamdesk.Transport/Seamdesk.Transport.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Seamdesk.App.Tests/Seamdesk.App.Tests.csproj" />
+    <Project Path="tests/Seamdesk.Core.Tests/Seamdesk.Core.Tests.csproj" />
+    <Project Path="tests/Seamdesk.Host.Tests/Seamdesk.Host.Tests.csproj" />
+    <Project Path="tests/Seamdesk.Mwb.Tests/Seamdesk.Mwb.Tests.csproj" />
+    <Project Path="tests/Seamdesk.Transport.Tests/Seamdesk.Transport.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/Shots/Shots.csproj" />
+    <Project Path="tools/Smoke/Smoke.csproj" />
+  </Folder>
+</Solution>

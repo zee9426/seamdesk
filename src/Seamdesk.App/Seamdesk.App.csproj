@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <!-- Only for NotifyIcon: WPF has no tray icon. Both ship in the Windows Desktop runtime. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- The exe's icon in Explorer and the Start menu: AppIcon's drawing at each size (master: docs/images/logo.svg). -->
+    <ApplicationIcon>seamdesk.ico</ApplicationIcon>
+    <Product>Seamdesk</Product>
+    <Company>Seamdesk</Company>
+    <Copyright>Copyright (c) 2026 zee9426</Copyright>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- ThemeMode (Fluent, following the system light or dark setting) is still marked experimental in .NET 10. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <AssemblyName>Seamdesk</AssemblyName>
+    <RootNamespace>Seamdesk.App</RootNamespace>
+    <!-- The release's runtime (win-x64.pubxml), restored with every build so packages.lock.json covers the publish too. -->
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF and WinForms both bring global usings that clash (Point, Application, MessageBox...). -->
+    <Using Remove="System.Drawing" />
+    <Using Remove="System.Windows.Forms" />
+    <Using Include="System.IO" />
+    <InternalsVisibleTo Include="Seamdesk.App.Tests" />
+    <InternalsVisibleTo Include="Smoke" />
+    <InternalsVisibleTo Include="Shots" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seamdesk.Host\Seamdesk.Host.csproj" />
+    <ProjectReference Include="..\Seamdesk.Mwb\Seamdesk.Mwb.csproj" />
+  </ItemGroup>
+
+</Project>

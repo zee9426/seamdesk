@@ -1,0 +1,15 @@
+<Project>
+  <!-- One version for every assembly: the top "## [x.y.z]" entry of CHANGELOG.md, the same one tools/release.ps1 names the zip
+       after. Without it everything reports the SDK default 1.0.0. -->
+  <PropertyGroup>
+    <Version>$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)CHANGELOG.md')), '(?s)^.*?\n## \[([0-9.]+)\].*$', '$1'))</Version>
+  </PropertyGroup>
+  <!-- Reproducible restores: each project's packages.lock.json pins every package, transitive ones included, with its hash.
+       Commit it with the package change; tools/release.ps1 restores in locked mode, so a drifted lock fails the release.
+       The lock records each project reference's package version: a fixed one (nothing here is packed) keeps a version bump
+       from rewriting every lock. -->
+  <PropertyGroup>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <PackageVersion>1.0.0</PackageVersion>
+  </PropertyGroup>
+</Project>

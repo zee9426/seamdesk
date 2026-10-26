@@ -1,0 +1,53 @@
+name: Bug report
+description: Something in Seamdesk doesn't work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Before you paste a log or screenshot, remove host names and IP addresses.
+        Never paste a Mouse Without Borders security key (seamdesk.log never holds one).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+  - type: input
+    id: version
+    attributes:
+      label: Seamdesk version
+      description: Settings > About.
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and build
+      description: Run `winver`, for example Windows 11 24H2, build 26100.
+    validations:
+      required: true
+  - type: textarea
+    id: machines
+    attributes:
+      label: The other machines
+      description: What each runs (Seamdesk and its version, or Mouse Without Borders and its version), and how they connect (wired, Wi-Fi, VPN).
+  - type: textarea
+    id: layout
+    attributes:
+      label: Layout
+      description: A screenshot of Settings > Layout helps with anything about crossing.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt
+      description: From %LOCALAPPDATA%\Seamdesk\seamdesk.log, around the time it happened. Remove names and addresses first.
+      render: text

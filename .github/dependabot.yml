@@ -1,0 +1,18 @@
+# Weekly update PRs for the NuGet packages (and their packages.lock.json files) and for GitHub Actions, once there are
+# workflows. Test-only packages come as one PR.
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      test-packages:
+        patterns:
+          - xunit*
+          - Microsoft.NET.Test.Sdk
+          - Microsoft.Extensions.TimeProvider.Testing
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
